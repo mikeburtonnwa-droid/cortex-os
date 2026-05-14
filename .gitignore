@@ -1,0 +1,12 @@
+.env
+.env.*
+secrets/**
+settings.local.json
+.claude/projects/
+.DS_Store
+*.swp
+node_modules/
+__pycache__/
+*.pyc
+.vscode/
+.idea/
