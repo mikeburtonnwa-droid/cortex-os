@@ -1,0 +1,80 @@
+# tools.yaml – ResearchCo Tool Overrides
+#
+# Refines the root _template/tools.yaml for ResearchCo's operating
+# context. Tools listed here override the root file for any work
+# inside reference/business-example/. Tools not listed inherit
+# from the root.
+#
+# This file demonstrates two patterns: per-business tool inventory
+# and per-tool failure protocol assignment.
+
+tools:
+
+  # Research function tools. Used by the researcher agent.
+  # Failure protocol: log_and_continue. A single failed lookup
+  # should not halt an engagement; the researcher logs the gap
+  # and continues with other sources.
+
+  WebSearch:
+    type: native
+    on_failure: log_and_continue
+    timeout_seconds: 45
+
+  WebFetch:
+    type: native
+    on_failure: log_and_continue
+    timeout_seconds: 30
+
+  # Source library access. ResearchCo's internal source repository.
+  # Failure protocol: escalate. Source library outage is an
+  # engagement-blocking event; the operator must intervene.
+
+  source_library_search:
+    type: mcp
+    server: researchco-sources
+    on_failure: escalate
+    timeout_seconds: 60
+    requires_approval: false
+
+  source_library_retrieve:
+    type: mcp
+    server: researchco-sources
+    on_failure: escalate
+    timeout_seconds: 60
+    requires_approval: false
+
+  # Client deliverable publication. Pushes the finished artifact
+  # to the client portal. Failure protocol: halt. A failed publish
+  # must be diagnosed before retry; silent retries can produce
+  # duplicate deliverables in the client view.
+
+  publish_to_client_portal:
+    type: custom
+    on_failure: halt
+    requires_approval: true
+    timeout_seconds: 120
+
+  # Internal analysis tooling. The analysis function uses these.
+  # Failure protocol: retry. Most analysis tool failures are
+  # transient and recoverable on a second attempt.
+
+  build_evidence_chain:
+    type: custom
+    on_failure: retry
+    timeout_seconds: 90
+
+  generate_confidence_scoring:
+    type: custom
+    on_failure: retry
+    timeout_seconds: 60
+
+  # Email outreach for primary-source interviews. Requires approval
+  # at every call; this is an external action with reputational
+  # consequences.
+
+  send_interview_request:
+    type: mcp
+    server: gmail
+    on_failure: escalate
+    timeout_seconds: 30
+    requires_approval: true
