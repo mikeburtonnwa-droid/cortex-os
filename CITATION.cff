@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you reference Cortex-OS in academic or professional work, please cite it using the metadata below."
+title: "Cortex-OS: A Cascading Constitutional Architecture for AI Operating Systems on Claude Code"
+abstract: >
+  Cortex-OS is a public reference implementation of a layered control system
+  for AI agent operation built on Claude Code's native primitives. Four
+  layers compose the pattern: cascading CLAUDE.md constitutions, deterministic
+  bash hooks, hub-and-spoke agent teams with enforced context boundaries, and
+  schema-driven configuration. The repository ships a reference business
+  example, a runtime utility layer for inspection and validation, and the
+  documentation that makes the pattern forkable.
+authors:
+  - family-names: Burton
+    given-names: Michael
+    email: mikeburtonnwa@gmail.com
+type: software
+version: "1.0.0"
+date-released: 2026-05-14
+license: MIT
+repository-code: "https://github.com/mikeburtonnwa-droid/cortex-os"
+keywords:
+  - claude-code
+  - agent-orchestration
+  - multi-agent-systems
+  - agentic-ai
+  - ai-operating-system
+  - constitutional-ai
+  - deterministic-enforcement
+  - context-boundary
+  - mcp
+preferred-citation:
+  type: software
+  title: "Cortex-OS: A Cascading Constitutional Architecture for AI Operating Systems on Claude Code"
+  authors:
+    - family-names: Burton
+      given-names: Michael
+  year: 2026
+  url: "https://github.com/mikeburtonnwa-droid/cortex-os"

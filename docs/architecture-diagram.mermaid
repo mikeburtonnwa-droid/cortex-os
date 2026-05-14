@@ -1,0 +1,60 @@
+flowchart TB
+    subgraph CASCADE["1. Constitutional Cascade"]
+        direction TB
+        L0["Root CLAUDE.md<br/>identity, hard rules,<br/>AI signature prohibition"]
+        L1["Domain<br/>optional"]
+        L2["Business<br/>e.g. ResearchCo"]
+        L3["Function<br/>research / analysis / delivery"]
+        L4["Environment<br/>optional"]
+        L0 --> L1
+        L1 --> L2
+        L2 --> L3
+        L3 --> L4
+    end
+
+    subgraph HOOKS["2. Deterministic Hooks"]
+        direction TB
+        H1["pre-tool-use.sh<br/>blocks credentials,<br/>destructive ops, unapproved sends"]
+        H2["post-tool-use.sh<br/>scans output for<br/>AI signature violations"]
+        H3["pre-compact.sh<br/>injects carry-forward state<br/>before context compaction"]
+        H4["stop.sh<br/>verifies session summary<br/>before termination"]
+    end
+
+    subgraph AGENTS["3. Agent Teams"]
+        direction TB
+        Orch["Orchestrator (hub)"]
+        Anl["Analyst"]
+        Res["Researcher"]
+        Wrt["Writer"]
+        Rev["Reviewer<br/>sees only the artifact"]
+        Orch -.->|dispatch| Anl
+        Orch -.->|dispatch| Res
+        Orch -.->|dispatch| Wrt
+        Orch -.->|after consolidation| Rev
+    end
+
+    subgraph SCHEMAS["4. Schema-Driven Configuration"]
+        direction TB
+        S1["Agent Frontmatter<br/>12 fields"]
+        S2["models.yaml"]
+        S3["tools.yaml"]
+        S4["settings.json"]
+    end
+
+    SESSION(("Claude Code<br/>Session"))
+
+    CASCADE -->|loads context| SESSION
+    HOOKS -->|fires on lifecycle events| SESSION
+    AGENTS -->|orchestrates specialists| SESSION
+    SCHEMAS -->|configures routing| SESSION
+
+    RUNTIME["runtime/<br/>cascade_walker, schema_validator,<br/>hook_simulator, pressure_testing_harness,<br/>current_reality_updater, skill_invocation_simulator"]
+    RUNTIME -.->|validates / inspects| CASCADE
+    RUNTIME -.->|validates / inspects| HOOKS
+    RUNTIME -.->|validates / inspects| AGENTS
+    RUNTIME -.->|validates / inspects| SCHEMAS
+
+    classDef sessionNode fill:#1e3a5f,stroke:#4a90e2,stroke-width:3px,color:#fff
+    classDef runtimeNode fill:#2d4a2d,stroke:#7eb87e,stroke-width:2px,color:#fff
+    class SESSION sessionNode
+    class RUNTIME runtimeNode

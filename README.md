@@ -2,20 +2,9 @@
 
 A cascading constitutional architecture for AI operating systems built on Claude Code's native primitives. Cortex-OS is not a framework to install. It is a pattern to fork, adapt, and inhabit.
 
-```
-       Root constitution (CLAUDE.md)
-                  │
-        ┌─────────┼─────────┐
-   Domain     Business     Function
-                  │
-              Environment
+![Cortex-OS Architecture](docs/architecture-diagram.png)
 
-   Cascading config           Deterministic hooks
-   ─────────────────         ──────────────────
-   loaded by Claude Code      fire on lifecycle events
-   walks the directory tree   block or allow tool calls
-   deeper files refine        enforce voice, scope, safety
-```
+*Diagram source: [`docs/architecture-diagram.mermaid`](docs/architecture-diagram.mermaid). Renders inline on GitHub when included as a mermaid code block.*
 
 Four layers compose the pattern:
 
@@ -44,12 +33,10 @@ The repository contains the pattern, a fully-instantiated reference business (Re
 
 Initial public release. The pattern is stable. The reference business and runtime layer are complete. A companion repository will publish the production execution pattern (LangGraph + Temporal wrapping a Cortex-OS-governed workflow) following community engagement on this one.
 
-## License and attribution
+## License, attribution, citation
 
 MIT License. See [LICENSE](LICENSE).
 
-The vibe coding evolution model that frames "Level 6+" is from Steve Yegge and Gene Kim's writing on AI-augmented engineering. The Agent Teams primitive and Claude Code are Anthropic's. Skills, hook patterns, and schema conventions referenced here build on community work that predates this repository.
+The Level 6+ framing is from Steve Yegge and Gene Kim's writing on AI-augmented engineering. Claude Code, Agent Teams, the hooks layer, and subagent invocation are Anthropic primitives documented at [docs.claude.com/claude-code](https://docs.claude.com/en/docs/claude-code); this repository composes them, it does not replace them. Skill auto-invocation conventions and the agent frontmatter shape build on community work in the Claude Code ecosystem. The RAG-triad framework referenced in the post-launch roadmap is from the TruLens project. The companion repository (LangGraph + Temporal wrapping a Cortex-OS-governed workflow) will be published separately following engagement on this one.
 
-For citation in academic or professional work, see [CITATION.cff](CITATION.cff).
-
-Maintained by Michael Burton. Issues and pull requests welcome under the standards described in CONTRIBUTING.md.
+For citation, see [CITATION.cff](CITATION.cff). Maintained by Michael Burton. Issues and PRs welcome under [CONTRIBUTING.md](CONTRIBUTING.md); pattern additions require an approved issue first.
