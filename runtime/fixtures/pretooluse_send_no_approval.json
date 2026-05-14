@@ -1,0 +1,9 @@
+{
+  "tool_name": "send_email",
+  "tool_input": {
+    "to": "client@example.com",
+    "subject": "Quarterly update",
+    "body": "Attached please find the report."
+  },
+  "session_id": "fixture-003"
+}

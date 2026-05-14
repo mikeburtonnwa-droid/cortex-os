@@ -1,0 +1,7 @@
+{
+  "tool_name": "Read",
+  "tool_input": {
+    "file_path": "/Users/example/notes.md"
+  },
+  "session_id": "fixture-002"
+}

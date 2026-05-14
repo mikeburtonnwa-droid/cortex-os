@@ -1,0 +1,8 @@
+{
+  "tool_name": "Write",
+  "tool_input": {
+    "file_path": "/tmp/draft.md",
+    "content": "The market shifted in Q3. Tariff changes drove the move. Competitors followed."
+  },
+  "session_id": "fixture-005"
+}

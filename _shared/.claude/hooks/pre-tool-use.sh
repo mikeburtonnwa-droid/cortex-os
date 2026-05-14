@@ -93,7 +93,7 @@ if [ "$TOOL_NAME" = "Bash" ]; then
   DESTRUCTIVE_PATTERNS=(
     'rm[[:space:]]+-rf?[[:space:]]+/($|[[:space:]])'
     'rm[[:space:]]+-rf?[[:space:]]+~($|[[:space:]])'
-    'rm[[:space:]]+-rf?[[:space:]]+\*'
+    'rm[[:space:]]+-rf?[[:space:]]+/?\*'
     ':\(\)\{[[:space:]]*:\|:&[[:space:]]*\}'
     'dd[[:space:]]+if=.*of=/dev/'
     'mkfs\.'
