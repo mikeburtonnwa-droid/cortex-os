@@ -1,0 +1,49 @@
+# models.yaml – Model Routing Template
+#
+# Declares which Claude model serves which role. Agents reference
+# roles via their frontmatter; the runtime resolves the role to a
+# concrete model at invocation time.
+#
+# The cascade applies. A models.yaml at the function level overrides
+# the business level; the business level overrides the root level.
+# The deepest file wins on a per-role basis.
+#
+# Replace this template's content with the roles your project uses.
+
+roles:
+
+  # Default reasoning role for agents that produce substantive output.
+  # Most agents map here unless they have a strong reason not to.
+  default:
+    model: sonnet
+    reasoning_effort: medium
+    notes: General-purpose work. Use this when no specific role applies.
+
+  # High-stakes reasoning. Architecture, adversarial review, complex
+  # analysis. Slower, more expensive, more accurate.
+  deep_reasoning:
+    model: opus
+    reasoning_effort: high
+    notes: For tasks where wrong is more costly than slow.
+
+  # High-throughput, low-stakes work. Routing, classification,
+  # tagging, quick lookups. Optimized for cost and latency.
+  fast_routing:
+    model: haiku
+    reasoning_effort: minimal
+    notes: For tasks where many calls run in sequence.
+
+  # Adversarial review. Receives only the artifact under review,
+  # never the development context. See docs/agent-teams-pattern.md
+  # for the context-boundary rationale.
+  reviewer:
+    model: opus
+    reasoning_effort: high
+    notes: Independent judgment. No development context exposure.
+
+  # Writer role. Drafts content under voice and style constraints.
+  # Pairs with the post-tool-use hook for AI signature enforcement.
+  writer:
+    model: sonnet
+    reasoning_effort: medium
+    notes: Drafts prose. The hooks layer enforces voice rules.

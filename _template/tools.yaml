@@ -1,0 +1,67 @@
+# tools.yaml – Tool Configuration Template
+#
+# Declares the project's tool inventory and per-tool failure
+# protocols. The runtime layer reads this file when resolving
+# tool calls and when an orchestrator hits an error.
+#
+# Failure protocols:
+#   retry             - re-attempt the call with same parameters
+#   escalate          - surface to operator, pause session
+#   halt              - stop the session
+#   log_and_continue  - record failure, proceed with degraded output
+#
+# Replace this template's content with the tools your project uses.
+
+tools:
+
+  # Native Claude Code tools. These ship with the runtime.
+
+  Read:
+    type: native
+    on_failure: retry
+    timeout_seconds: 30
+
+  Write:
+    type: native
+    on_failure: escalate
+    timeout_seconds: 30
+    requires_approval: false
+
+  Edit:
+    type: native
+    on_failure: escalate
+    timeout_seconds: 30
+
+  Bash:
+    type: native
+    on_failure: escalate
+    timeout_seconds: 60
+    requires_approval: false
+
+  WebSearch:
+    type: native
+    on_failure: retry
+    timeout_seconds: 45
+
+  # MCP-backed tools. Replace with the servers your project uses.
+
+  send_email:
+    type: mcp
+    server: gmail
+    on_failure: escalate
+    timeout_seconds: 30
+    requires_approval: true
+
+  search_calendar:
+    type: mcp
+    server: gcal
+    on_failure: log_and_continue
+    timeout_seconds: 20
+
+  # Custom tools defined for this project.
+
+  publish_report:
+    type: custom
+    on_failure: halt
+    requires_approval: true
+    timeout_seconds: 120
