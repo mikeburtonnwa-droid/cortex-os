@@ -84,6 +84,8 @@ esac
 # because they document the rule itself. The exemption matches on
 # path suffix.
 EXEMPT_SUFFIXES=(
+  'CLAUDE.md'
+  'AGENTS.md'
   '_template/CLAUDE.md'
   '_shared/rules/ai-signature-prohibition.md'
   '_shared/rules/communication-style.md'

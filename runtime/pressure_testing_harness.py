@@ -68,6 +68,8 @@ CITATION_MARKER = re.compile(r"(\[\d+\]|\(\d{4}\)|see https?://|cf\.|cited|per [
 THREE_PART = re.compile(r", [a-zA-Z][a-zA-Z ]+, and [a-zA-Z]")
 
 EXEMPT_FILES = {
+    "CLAUDE.md",  # Root constitution quotes the banned words.
+    "AGENTS.md",  # Cross-tool standard file quotes the banned words.
     "_template/CLAUDE.md",
     "_shared/rules/ai-signature-prohibition.md",
     "_shared/rules/communication-style.md",
@@ -76,7 +78,6 @@ EXEMPT_FILES = {
     "_shared/.claude/skills/pressure-testing/SKILL.md",
     "docs/hooks-layer.md",
     "docs/schema-reference.md",
-    "CLAUDE.md",  # Root constitution quotes the banned words.
 }
 
 
