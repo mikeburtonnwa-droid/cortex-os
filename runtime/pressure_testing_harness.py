@@ -70,6 +70,10 @@ THREE_PART = re.compile(r", [a-zA-Z][a-zA-Z ]+, and [a-zA-Z]")
 EXEMPT_FILES = {
     "_template/CLAUDE.md",
     "_shared/rules/ai-signature-prohibition.md",
+    "_shared/rules/communication-style.md",
+    "_shared/rules/data-governance.md",
+    "_shared/.claude/skills/writing-style/SKILL.md",
+    "_shared/.claude/skills/pressure-testing/SKILL.md",
     "docs/hooks-layer.md",
     "docs/schema-reference.md",
     "CLAUDE.md",  # Root constitution quotes the banned words.
