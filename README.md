@@ -28,10 +28,11 @@ The repository contains the pattern, a fully instantiated reference business (Re
 - [reference/business-example/](reference/business-example/) – ResearchCo, the worked example
 - [runtime/](runtime/) – inspection and validation utilities
 - [CONTRIBUTING.md](CONTRIBUTING.md) – contribution standards
+- [ROADMAP.md](ROADMAP.md) – planned production-execution companion (cortex-pipeline)
 
 ## Status
 
-Initial public release. The pattern is stable. The reference business and runtime layer are complete. A companion repository will publish the production execution pattern (LangGraph + Temporal wrapping a Cortex-OS-governed workflow) following community engagement on this one.
+Initial public release. The pattern is stable. The reference business and runtime layer are complete. A companion repository for the production execution pattern (LangGraph + Temporal wrapping a Cortex-OS-governed workflow) is planned; see [ROADMAP.md](ROADMAP.md) for the architectural plan and phasing.
 
 ## Related work
 
